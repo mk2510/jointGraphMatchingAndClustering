@@ -30,7 +30,7 @@ Before running the first experiments a few setup steps are necessary.
 
     d) [Graph toolbox](https://de.mathworks.com/matlabcentral/fileexchange/5355-toolbox-graph)
 
-This code was tested on Matlab R2019a and excetuted on  Matlab R2019b on Linux. Just from this version are all calculated results.   
+This code was tested on Matlab R2019a and excetuted on  Matlab R2019b on Linux. The precalculated files are from the Linux version.
 
 ## Quick start
 
