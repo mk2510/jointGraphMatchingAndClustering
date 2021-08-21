@@ -12,6 +12,7 @@ addpath(genpath([footpath '/src']));
 addpath(genpath([footpath '/lib']));
 addpath(genpath([footpath '/matching']));
 addpath(genpath([footpath '/HOPE-master']));
+addpath(genpath([footpath '/experimentalSetup']));
 addpath(genpath([footpath '/syntheticPointClouds']));
 addpath(genpath([footpath '/PrincetonPointClouds']));
 
