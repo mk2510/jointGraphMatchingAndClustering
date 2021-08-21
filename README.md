@@ -1,6 +1,6 @@
 # Joint Graph Matching and Clustering
 
-![Teaser Image Graphic][https://github.com/mk2510/jointGraphMatchingAndClustering/blob/main/PaperTeaserImageNew.pdf]
+![Teaser Image Graphic](https://github.com/mk2510/jointGraphMatchingAndClustering/blob/main/PaperTeaserImageNew.pdf)
 
 ## Abstract
 
