@@ -1,5 +1,7 @@
 # Joint Graph Matching and Clustering
 
+![Teaser Image Graphic][https://github.com/mk2510/jointGraphMatchingAndClustering/blob/main/PaperTeaserImageNew.pdf]
+
 ## Abstract
 
 This paper proposes a new algorithm for simultaneous graph matching and clustering. 
@@ -28,5 +30,12 @@ Before running the first experiments a few setup steps are necessary.
 
     d) [Graph toolbox](https://de.mathworks.com/matlabcentral/fileexchange/5355-toolbox-graph)
 
-This code was tested on Matlab R2019a and excetuted on  Matlab R2019b on Linux. Just from this version are all calculated results.
+This code was tested on Matlab R2019a and excetuted on  Matlab R2019b on Linux. Just from this version are all calculated results.   
 
+## Quick start
+
+In the folder code there are 3 files. The first file is called `cmuHouse.m`. This file performs the experiments on the cmu House dataset.
+The second file is called `syntheticData.m`. Executing this file will display all graphs, which show the results of our synthetic data experiments.
+The third file is called `princetonShapes.m`. This will execute the experiments, of the helicopter and ship scenes.
+
+## 
