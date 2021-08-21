@@ -27,7 +27,7 @@ prex = cellStr('cmum', 'tagSrc', tagSrc, 'tagAlg', tagAlg, 'iBin', iBin);
                    'fold', folder);
 
 % load
-if svL == 2 && exist(path, 'file')
+if svL == 1 && exist(path, 'file')
     wsBin = matFld(path, 'wsBin');
     prInOut('cmumAsgRunBin', 'old, %s', prex);    
     return;
@@ -41,9 +41,6 @@ PF = PFs{iBin};
 
 % parameters for algorithms
 [parAlgs, algs] = gmPar(tagAlg);
-
-% dimension
-nRep = size(PF, 2);
 
 %mkrahn: set nRep to 26 to improve speed
 nRep = 10;
