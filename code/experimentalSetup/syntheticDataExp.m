@@ -75,7 +75,7 @@ for iRep = 1:19
     Acc(nAlg + 4, iRep) = asg.acc * asg.acc1 * asg.acc2;
 
     
-    asg = kpsdp_2_PMSDP_wrapper_clustering(7, asgT, K,perm_const, W1, W2);
+    asg = kpsdp_2_PMSDP_wrapper_clustering(7, asgT, K, W1, W2);
     
  
     Acc(nAlg-8, iRep) = asg.acc;

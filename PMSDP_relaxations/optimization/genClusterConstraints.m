@@ -1,6 +1,8 @@
 function [objY,F] = genClusterConstraints(problem)
 %--------------------------------------------
-% Start cluster constraints
+% Description:
+% generates the clustering constraints for the joint GM and Clustering
+% relaxation
 %--------------------------------------------
 X = problem.X;
 

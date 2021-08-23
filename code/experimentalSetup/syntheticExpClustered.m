@@ -112,7 +112,7 @@ for iRep = 1:8
     Obj(nAlg+3, iRep) = asg.obj;
     
     tic
-    asg = kpsdp_2_PMSDP_wrapper_clustering(15, asgT, K,perm_const, W1, W2);
+    asg = kpsdp_2_PMSDP_wrapper_clustering(15, asgT, K, W1, W2);
     toc
     %disp(asg.acc)
     %disp(asg.acc2)

@@ -94,7 +94,7 @@ for iRep = 1 : nRep
         Acc(iAlg, iRep) = asg.acc;
         Obj(iAlg, iRep) = asg.obj;
     end
-        asg = kpsdp_2_PMSDP_wrapper(asgT, K);
+        asg = kpsdp_2_PMSDP_wrapper(threshold, asgT, K);
         Acc(nAlg +1, iRep) = asg.acc;
         Obj(nAlg + 1, iRep) = asg.obj;
        

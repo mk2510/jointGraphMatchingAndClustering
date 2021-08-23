@@ -1,20 +1,17 @@
 function [ X_proj, R_proj, currObj, currRun ] = interleaving2(num_of_emb, X, R, P, Q,  interleavingClass, params)
 %===============================================================
-% module:
-% ------
-% interleaving.m
-%
-% paper:
+% modified file of the paper:
 % -------
 % Point registration via efficient convex relaxation. 
 % Haggai Maron, Nadav Dym, Itay Kezurer, Shahar Kovalsky,Yaron Lipman 
 %
+% original module:
+% ------
+% generateConstraints.m
+%
 % Description:
-% -----------
 % alternating minimization of X given R and R given X
-
 %===============================================================
-
 %--------------------------------------------
 % Initialization
 %--------------------------------------------

@@ -1,18 +1,17 @@
-function [X_proj,R_proj,X,R, objective] = solvePMSDP2(P,Q,params, num_of_emb, groupLs)
+function [X_proj,R_proj,X,R, objective] = solvePMSDP2(P,Q,params, num_of_emb)
 %===============================================================
-% module:
-% ------
-% solvePMSDP.m
-%
-% paper:
+% modified file of the paper:
 % -------
 % Point registration via efficient convex relaxation. 
 % Haggai Maron, Nadav Dym, Itay Kezurer, Shahar Kovalsky,Yaron Lipman 
 %
+% original module:
+% ------
+% solvePMSDP.m
+%
 % Description:
-% -----------
-% solves PM-SDP
-
+% generates and solves the PMSDP relaxation. Changed the method to handle
+% multiple pointclouds
 %===============================================================
 
 %--------------------------------------------
@@ -40,12 +39,10 @@ problem.Q = Q;
 % generate constraints and objective function
 fprintf('generating constraints...\n')
 tic
-[a,b] = size(groupLs{1});
-[F,obj1,problem] = generateConstraints2(problem,params,1, a, groupLs{1});
+[F,obj1,problem] = generateConstraints2(problem,params,1);
 obj = obj1;
 for i = 2:num_of_emb
-[a,b] = size(groupLs{i});
-[Fi,obji,problem] = generateConstraints2(problem,params,i, a, groupLs{i});
+[Fi,obji,problem] = generateConstraints2(problem,params,i);
 F = [F Fi];
 obj = obj + obji;
 end
@@ -70,17 +67,6 @@ for i = 1:num_of_emb
     R{i} = double(problem.R{i});
 end
 objective = value(obj); % optimization objective
-%============================================
-
-%--------------------------------------------
-% Factorize Y
-%--------------------------------------------
-%for i = 1:num_of_emb
-%[ YSvdU, ~, YSvdV ] = svd( Y{i} );
-%XY{i} = reshape( YSvdU(:,1), size( X ) );
-%RY{i} = reshape( YSvdV(:,1), size( R{i} ) );
-%end
-%============================================
 
 %--------------------------------------------
 % Project Result
@@ -107,10 +93,6 @@ numIterInter = zeros( 1, 2 );
 [ Xs(:,:,1), Rs(:,:,1), objInterLeaving(1), numIterInter(1)] =  interleaving2(num_of_emb, X, R, P, Q, InterleavingType.X, params );
 % LB, start with R
 [ Xs(:,:,2), Rs(:,:,2), objInterLeaving(2), numIterInter(2)] =  interleaving2(num_of_emb, X, R, P, Q, InterleavingType.R, params );
-% UB, start with X
-%[ Xs(:,:,3), Rs(:,:,3), objInterLeaving(3), numIterInter(3)] =  interleaving2( XY, RY, P, Q, InterleavingType.X, params );
-% UB, start with R
-%[ Xs(:,:,4), Rs(:,:,4), objInterLeaving(4), numIterInter(4)] =  interleaving2( XY, RY, P, Q, InterleavingType.R, params );
 %============================================
 
 %--------------------------------------------

@@ -1,18 +1,16 @@
-function [F,objY,problem] = generateConstraints2( problem,params, number, numberOfGroups, groupLs)
+function [F,objY,problem] = generateConstraints2( problem,params, number)
 %===============================================================
-% module:
+% modified file of the paper:
+% -------
+% Point registration via efficient convex relaxation. 
+% Haggai Maron, Nadav Dym, Itay Kezurer, Shahar Kovalsky,Yaron Lipman 
+%
+% original module:
 % ------
 % generateConstraints.m
 %
-% paper:
-% -------
-% Point registration via efficient convex relaxation. 
-% Haggai Maron, Nadav Dym, Itay Kezurer, Shahar Kovalsky, Yaron Lipman 
-%
 % Description:
-% -----------
-% generates PM-SDP constraints
-
+% generates matching constraints for the PMSDP algorithm
 %===============================================================
 
 %--------------------------------------------

@@ -148,7 +148,7 @@ rng(42);
     [P,Q, KP, KQ, asgT, gphs, perm_const,node_aff, W1, W2,graphDisp] = genPointCloudsAndGraphs(i,j);
     
     K = conKnlGphKU(KP, KQ, gphs);
-    asg = kpsdp_2_PMSDP_wrapper_clustering(thres, asgT, K,perm_const, W1, W2);
+    asg = kpsdp_2_PMSDP_wrapper_clustering(thres, asgT, K, W1, W2);
     
 
     Acc(nAlg-8, iRep) = asg.acc;
