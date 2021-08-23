@@ -41,7 +41,7 @@ prIn('cmumAsgRun', 'new, %s', prex);
 
 % dimension
 nBin = length(gaps);
-nAlg = length(parAlgs) + 2;
+nAlg = length(parAlgs);
 
 % per gap
 [Me, Dev, ObjMe, ObjDev] = zeross(nAlg + 1, nBin);
@@ -50,11 +50,8 @@ prCIn('bin', nBin, 1);
 for iBin = 1 : 10
     prC(iBin);
 
-    wsBin = cmuHouseExp(threshold, tagSrc, tagAlg, iBin, 'svL', 2);
+    wsBin = cmuHouseExp(threshold, tagSrc, tagAlg, iBin, 'svL', 1);
     [Obj, Acc] = stFld(wsBin, 'Obj', 'Acc');
-    aaa = repmat(Obj(end, :), nAlg + 1, 1);
-    Obj = Obj ./ aaa;
-   
     
     % mean & deviation
     Me(:, iBin) = mean(Acc, 2);

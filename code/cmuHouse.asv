@@ -14,7 +14,8 @@ tagAlg = 2;
 tagSrc = 1;
 [~, val1s] = cmumAsgPair(tagSrc);
 
-wsRun1 = cmuHouseRunner(0.93, tagSrc, tagAlg, 'svL', svL);
+, tagSrc, tagAlg, varargin
+wsRun1 = cmuHouseRunner(0.93, tagSrc, imgPar, tagSrc, tagAlg, 'svL', svL);
 
 printMatAcc = wsRun1.Me;
 printMatObj = wsRun1.ObjMe;
@@ -39,6 +40,6 @@ xlim([0,90])
 set(h,{'LineWidth'},{0.5;0.5;0.5;0.5;0.5;0.5;0.5;0.5;0.5;2})
 set(h,{'Marker'}, {'+';'o';'*'; '.';'x'; '>';'p';'s';'d'; '^'})
 xlabel('baseline')
-ylabel('objective')
+ylabel('objective ratio')
 set(gcf,'PaperOrientation','landscape');
 end
