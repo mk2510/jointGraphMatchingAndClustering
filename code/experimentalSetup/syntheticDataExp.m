@@ -1,4 +1,4 @@
-function wsBin = syntheticDataExp(thres, rePi, tagSrc, tagAlg, iBin, varargin)
+function wsBin = syntheticDataExp(rePi, tagSrc, tagAlg, iBin, varargin)
 % Run graph matching algorithm on the CMUM Motion data set.
 %
 % Input

@@ -1,4 +1,4 @@
-function wsRun = syntheticRunnerClustered(threshold, starti, tagSrc, tagAlg, varargin)
+function wsRun = syntheticRunnerClustered(starti, tagSrc, tagAlg, varargin)
 % Run graph matching algorithm on the CMU Motion data set.
 %
 % Input
@@ -19,7 +19,7 @@ function wsRun = syntheticRunnerClustered(threshold, starti, tagSrc, tagAlg, var
 
 % save option
 folder = "cmum/asg/runT3";
-prex = cellStr('cmum', 'tagSrc', tagSrc, 'tagAlg', tagAlg, threshold);
+prex = cellStr('cmum', 'tagSrc', tagSrc, 'tagAlg', tagAlg);
 [svL, path] = psSv(varargin, ...
     'prex', prex, ...
     'subx', 'run', ...

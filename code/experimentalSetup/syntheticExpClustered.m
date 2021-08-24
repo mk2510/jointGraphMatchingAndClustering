@@ -1,22 +1,6 @@
 function wsBin = syntheticExpClustered(rePi, tagSrc, tagAlg, iBin, varargin)
-% Run graph matching algorithm on the CMUM Motion data set.
-%
-% Input
-%   tagSrc  -  source type, 1 | 2 | 3
-%   tagAlg  -  algorithm type, 1 | 2 | ...
-%   iBin    -  bin index
-%   varargin
-%     save option
-%
-% Output
-%   wsBin
-%     prex  -  name
-%     Acc   -  accuracy, nAlg x nRep
-%     Obj   -  objective, nAlg x nRep
-%
-% History
-%   create  -  Feng Zhou (zhfe99@gmail.com), 01-25-2011
-%   modify  -  Feng Zhou (zhfe99@gmail.com), 05-07-2013
+% Run graph matching algorithms on the synthetic clustered data
+
 
 % save option
 folder = "cmum/asg/binT3";

@@ -1,72 +1,12 @@
 function wsBin = princtonExp(thres, rePi, tagSrc, tagAlg, iBin, varargin)
-% Run graph matching algorithm on the CMUM Motion data set.
+% Run graph matching and clustering algorithm on Princeton Shape Dataset.
 %
-% Input
-%   tagSrc  -  source type, 1 | 2 | 3
-%   tagAlg  -  algorithm type, 1 | 2 | ...
-%   iBin    -  bin index
-%   varargin
-%     save option
-%
-% Output
-%   wsBin
-%     prex  -  name
-%     Acc   -  accuracy, nAlg x nRep
-%     Obj   -  objective, nAlg x nRep
-%
-% History
-%   create  -  Feng Zhou (zhfe99@gmail.com), 01-25-2011
-%   modify  -  Feng Zhou (zhfe99@gmail.com), 05-07-2013
-
-% save option
-folder = "cmum/asg/bin" + num2str(thres) + "T" + num2str(rePi);
-prex = cellStr('cmum', 'tagSrc', tagSrc, 'tagAlg', tagAlg, 'iBin', iBin);
-[svL, path] = psSv(varargin, ...
-    'prex', prex, ...
-    'subx', 'bin', ...
-    'fold', folder);
-
-% load
-if svL == 1 && exist(path, 'file')
-    wsBin = matFld(path, 'wsBin');
-    prInOut('cmumAsgRunBin', 'old, %s', prex);
-    return;
-end
-prIn('cmumAsgRunBin', 'new, %s', prex);
-
-% parameters for generating src
-[tag, gaps, PFs, nIns] = cmumAsgPair(tagSrc);
-PF = PFs{iBin};
-
-% parameters for algorithms
-[parAlgs, algs] = gmPar(tagAlg);
-
-%mkrahn: set nRep to 26 to improve speed
-nRep = rePi;
-nAlg = length(parAlgs);
-
-% per repetition (pair)
-% mkrahn: changed the code to accomodate PMSDP
-[Acc, Obj] = zeross(nAlg + 1, nRep);
-prCIn('nRep', nRep, 1);
-
 rng(42);
-
-
-prC(iRep);
 
 [P,Q, KP, KQ, asgT, gphs, perm_const,node_aff, W1, W2,graphDisp] = genPointCloudsAndGraphs2(i,j);
 
 K = conKnlGphKU(KP, KQ, gphs);
 asg = kpsdp_2_PMSDP_wrapper_clustering(7, asgT, K,perm_const, W1, W2);
-
-
-Acc(nAlg-8, iRep) = asg.acc;
-Acc(nAlg-7, iRep) = asg.acc1;
-Acc(nAlg-6, iRep) = asg.acc2;
-Obj(nAlg-8, iRep) = asg.obj;
-
-Acc(nAlg + 2, iRep) = asg.acc * asg.acc1 * asg.acc2;
 
 
 cmap = zeros(29,3);
@@ -150,15 +90,6 @@ camva(  11.1817)
 K = conKnlGphKU(KP, KQ, gphs);
 asg = kpsdp_2_PMSDP_wrapper_clustering(thres, asgT, K, W1, W2);
 
-
-Acc(nAlg-8, iRep) = asg.acc;
-Acc(nAlg-7, iRep) = asg.acc1;
-Acc(nAlg-6, iRep) = asg.acc2;
-Obj(nAlg-8, iRep) = asg.obj;
-
-Acc(nAlg + 2, iRep) = asg.acc * asg.acc1 * asg.acc2;
-
-
 cmap = zeros(28,3);
 cmap(:,1) = 1;
 cmap(asg.y1 == 1,2) = 1;
@@ -236,11 +167,6 @@ camproj('orthographic')
 camtarget([   0.5569    0.3655    0.2594])
 camva(9.7951)
 prCOut(nRep + 1);
-
-% store
-wsBin.prex = prex;
-wsBin.Acc = Acc;
-wsBin.Obj = Obj;
 
 
 prOut;

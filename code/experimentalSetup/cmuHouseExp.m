@@ -2,6 +2,7 @@ function wsBin = cmuHouseExp(threshold, tagSrc, tagAlg, iBin, varargin)
 % Run graph matching algorithm on the CMUM Motion data set.
 %
 % Input
+%   threshold - threshold for HOPE embedding
 %   tagSrc  -  source type, 1 | 2 | 3
 %   tagAlg  -  algorithm type, 1 | 2 | ...
 %   iBin    -  bin index
@@ -16,7 +17,7 @@ function wsBin = cmuHouseExp(threshold, tagSrc, tagAlg, iBin, varargin)
 %
 % History
 %   create  -  Feng Zhou (zhfe99@gmail.com), 01-25-2011
-%   modify  -  Feng Zhou (zhfe99@gmail.com), 05-07-2013
+%   modify  -  Maximilian Krahn (max.krahn@outlook.com), 24-08-2021
 
 % save option
 folder = "cmum/asg/bin";

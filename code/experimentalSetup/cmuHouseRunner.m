@@ -15,7 +15,7 @@ function wsRun = cmuHouseRunner(threshold, tagSrc, tagAlg, varargin)
 %
 % History
 %   create  -  Feng Zhou (zhfe99@gmail.com), 01-25-2009
-%   modify  -  Feng Zhou (zhfe99@gmail.com), 03-04-2013
+%   modify  -  Maximilian Krahn (max.krahn@outlook.com), 24-08-2021
 
 % save option
 folder = "cmum/asg/run";

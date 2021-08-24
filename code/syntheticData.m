@@ -17,7 +17,7 @@ tagSrc = 2;
 runPar = mod(11, 10);
 imgPar = floor(11/10);
 
-wsRun1 = syntheticDataRunner(1, imgPar, imgPar, tagSrc, tagAlg, 'svL', svL);
+wsRun1 = syntheticDataRunner(tagSrc, tagAlg, 'svL', svL);
 fsta = wsRun1.Acc;
 plot_data = fsta(end-2:end,2:2:end-1);
 plot_data = plot_data .^(1/3);
