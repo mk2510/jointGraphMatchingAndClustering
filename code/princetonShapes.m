@@ -17,4 +17,4 @@ tagSrc = 2;
 runPar = mod(11, 10);
 imgPar = floor(11/10);
 
-wsRun1 = princtonShapeRunner(1, imgPar, imgPar, tagSrc, tagAlg, 'svL', svL);
+princtonExp(1, imgPar, tagSrc, tagAlg, iBin, 'svL', 2);

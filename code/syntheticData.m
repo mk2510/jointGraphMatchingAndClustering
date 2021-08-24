@@ -103,7 +103,7 @@ set(h,{'Marker'}, {'+';'o';'*'});
 xlabel('\sigma = 0.05 * x')
 ylabel('a_c')
 
-wsRun3 = syntheticRunnerClustered(4, imgPar, imgPar, tagSrc, tagAlg, 'svL', svL);
+wsRun3 = syntheticRunnerClustered(4, imgPar, tagSrc, tagAlg, 'svL', svL);
 
 fsta = wsRun3.Acc;
 plot_data = fsta(end-2:end,2:end-1);

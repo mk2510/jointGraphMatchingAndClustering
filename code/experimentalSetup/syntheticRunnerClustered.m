@@ -1,4 +1,4 @@
-function wsRun = syntheticRunnerClustered(threshold, starti, endi, tagSrc, tagAlg, varargin)
+function wsRun = syntheticRunnerClustered(threshold, starti, tagSrc, tagAlg, varargin)
 % Run graph matching algorithm on the CMU Motion data set.
 %
 % Input
@@ -21,14 +21,14 @@ function wsRun = syntheticRunnerClustered(threshold, starti, endi, tagSrc, tagAl
 folder = "cmum/asg/runT3";
 prex = cellStr('cmum', 'tagSrc', tagSrc, 'tagAlg', tagAlg, threshold);
 [svL, path] = psSv(varargin, ...
-                   'prex', prex, ...
-                   'subx', 'run', ...
-                   'fold', folder);
+    'prex', prex, ...
+    'subx', 'run', ...
+    'fold', folder);
 
 % load
-if svL == 2 && exist(path, 'file')
+if svL == 1 && exist(path, 'file')
     wsRun = matFld(path, 'wsRun');
-    prInOut('cmumAsgRun', 'old, %s', prex);    
+    prInOut('cmumAsgRun', 'old, %s', prex);
     return;
 end
 prIn('cmumAsgRun', 'new, %s', prex);
@@ -41,30 +41,16 @@ prIn('cmumAsgRun', 'new, %s', prex);
 
 % dimension
 nBin = length(gaps);
-nReps = cellDim(PFs, 2);
 nAlg = length(parAlgs) + 2;
 
 % per gap
 [Me, Dev, ObjMe, ObjDev] = zeross(nAlg + 1, nBin);
 prCIn('bin', nBin, 1);
 
-%
+prC(iBin);
 
-for iBin = 1 : 1
-    prC(iBin);
+wsBin = syntheticExpClustered(starti, tagSrc, tagAlg, iBin, 'svL', 2);
 
-    wsBin = syntheticExpClustered(threshold, starti, tagSrc, tagAlg, iBin, 'svL', 2);
-    [Obj, Acc] = stFld(wsBin, 'Obj', 'Acc');
-    %aaa = repmat(Obj(end, :), nAlg + 1, 1);
-    %Obj = Obj ./ aaa;
-   
-    
-    % mean & deviation
-    %Me(:, iBin) = mean(Acc, 2);
-    %Dev(:, iBin) = std(Acc, 0, 2);
-    %ObjMe(:, iBin) = mean(Obj, 2);
-    %ObjDev(:, iBin) = std(Obj, 0, 2);
-end
 prCOut(nBin + 1);
 
 % store

@@ -36,7 +36,6 @@ prIn('cmumAsgRunBin', 'new, %s', prex);
 
 % parameters for generating src
 [tag, gaps, PFs, nIns] = cmumAsgPair(tagSrc);
-gap = gaps(iBin);
 PF = PFs{iBin};
 
 % parameters for algorithms
