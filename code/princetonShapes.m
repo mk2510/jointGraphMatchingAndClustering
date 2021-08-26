@@ -6,15 +6,4 @@ prSet(3);
 %% save flag
 svL = 0; % change svL = 1 if you want to re-run the experiments.
 
-%% algorithm parameter
-tagAlg = 2;
-[~, algs] = gmPar(tagAlg);
-
-%% run 1 (perfect graphs, no noise)
-tagSrc = 2;
-[~, val1s] = cmumAsgPair(tagSrc);
-
-runPar = mod(11, 10);
-imgPar = floor(11/10);
-
-princtonExp(1, imgPar, tagSrc, tagAlg, iBin, 'svL', 2);
+princtonExp(7, 'svL', 2);

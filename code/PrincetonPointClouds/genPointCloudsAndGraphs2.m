@@ -1,4 +1,4 @@
-function [P,Q, KP, KQ, X_gt, gphs, permConstraint, node_aff, W1, W2,graphDisp] = genPointCloudsAndGraphs2(id1, id2)
+function [P,Q, KP, KQ, X_gt, gphs, permConstraint, node_aff, W1, W2,graphDisp] = genPointCloudsAndGraphs2()
 
 graphDisp = cell(2,1);
 [P, P1, face, adja1, Eg1, graphDisp{1}, y1] = genImageGraph3();

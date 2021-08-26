@@ -1,11 +1,11 @@
-function [P,Q, KP, KQ, X_gt, gphs, permConstraint, node_aff, W1, W2,graphDisp] = genPointCloudsAndGraphs(id1, id2)
+function [P,Q, KP, KQ, X_gt, gphs, permConstraint, node_aff, W1, W2,graphDisp] = genPointCloudsAndGraphs()
 
 graphDisp = cell(2,1);
-[P, P1, face, adja1, Eg1, graphDisp{1}, y1] = genImageGraph1();
-[Q, Q1, face, adja2, Eg2, graphDisp{2}, y2] = genImageGraph2();
+[P, P1, ~, adja1, Eg1, graphDisp{1}, y1] = genImageGraph1();
+[Q, Q1, ~, adja2, Eg2, graphDisp{2}, y2] = genImageGraph2();
 P1 = P1';
 Q1 = Q1';
-[k,n] = size(P1);
+[~,n] = size(P1);
 
 
 i = randperm(n);
@@ -14,7 +14,6 @@ X = X(i,:);
 X_gt.X = X;
 X_gt.y1 = y1;
 X_gt.y2 = y2;
-%X_gt.X = eye(30);
 Q1 = (Q1 * X);
 graphDisp{2}.P1 = Q1';
 graphDisp{2}.G = graph(X' * adja2 * X);
@@ -34,11 +33,11 @@ agd2 = mean(alsp2,2);
 
 
 
-[cc, da] = size(Eg1);
-[cb, da] = size(Eg2);
+[cc, ~] = size(Eg1);
+[cb, ~] = size(Eg2);
 
-[dimP, number_of_nodes1] = size(P1);
-[dimQ, number_of_nodes2] = size(Q1);
+[~, number_of_nodes1] = size(P1);
+[~, number_of_nodes2] = size(Q1);
 
 
 G1 = zeros(number_of_nodes1, cc);
@@ -94,17 +93,8 @@ KP = zeros(number_of_nodes1, number_of_nodes2);
 DQ = conDst(dsts1, dsts2); 
 
 
-agd1Mat = repmat(agd1,1,number_of_nodes1);
-agd2Mat = repmat(agd2,1,number_of_nodes1);
-%KP = abs(agd1Mat - agd2Mat');
-%m = max(KP, [], 'all');
-%KP = exp(-KP / (m+1));
 m = max(DQ, [], 'all');
 KQ = exp(-DQ / (m+1));
-%[xx,yy] = size(KQ);
-%KQ = zeros(xx,yy);
-
-%[KP, KQ] = coupledNodeEdgeScoring(Eg1', Eg2', number_of_nodes1, number_of_nodes2);
 
 gphs{1}.Pt = P1;
 gphs{2}.Pt = Q1;
@@ -174,7 +164,6 @@ function B = allspath(A)
 B=full(A);
 B(B==0)=Inf;
 C=ones(size(B));
-iter=0;
 while any(C(:))
     C=B;
     B=min(B,squeeze(min(repmat(B,[1 1 length(B)])+...
