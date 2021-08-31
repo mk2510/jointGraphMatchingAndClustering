@@ -11,5 +11,6 @@ addpath(genpath([footpath '/Mosek']));
 addpath(genpath([footpath '/toolbox_graph']));
 addpath(genpath([footpath '/YALMIP']));
 
-
+% Hes displays warnings, which will be surpressed
+warning('off','all')
 end
