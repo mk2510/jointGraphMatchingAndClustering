@@ -15,7 +15,7 @@ for i = 1:n
 end
 
 acc = matchAsg(X', groundTruth);
-asg.acc = acc;% * accC1 * accC2;
+asg.acc = acc;
 asg.acc1 = accC1;
 asg.acc2 = accC2;
 asg.X = X;

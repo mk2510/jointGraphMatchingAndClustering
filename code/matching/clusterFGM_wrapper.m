@@ -12,7 +12,7 @@ acc = asg.acc;
 accC1 = clusterAcc(goundTruth.y1, y1);
 accC2 = clusterAcc(goundTruth.y2, y2);
 
-asg.acc = acc;% * accC1 * accC2;
+asg.acc = acc;
 asg.acc1 = accC1;
 asg.acc2 = accC2;
 asg.obj = asg.X(:)' * K * asg.X(:);
