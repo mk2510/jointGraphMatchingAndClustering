@@ -34,8 +34,8 @@ This code was tested on Matlab R2019a and excetuted on  Matlab R2019b on Linux. 
 
 ## Quick start
 
-In the folder code there are 3 files. The first file is called `cmuHouse.m`. This file performs the experiments on the cmu House dataset.
+The three excetution files for the experiments are in the main directory. The first file is called `cmuHouse.m`. This file performs the experiments on the cmu House dataset.
 The second file is called `syntheticData.m`. Executing this file will display all graphs, which show the results of our synthetic data experiments.
-The third file is called `princetonShapes.m`. This will execute the experiments, of the helicopter and ship scenes.
+The third file is called `princetonShapes.m`. This will execute the experiments, of the helicopter and ship scenes. With the current setup the precalculated files will be loaded and displayed. To enable calculation the svl flag needs to be set to 0. The precalculated results might differ from the reexecuted ones depending on the used Matlab version.
 
 ## 
