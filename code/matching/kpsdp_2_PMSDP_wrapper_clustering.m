@@ -111,8 +111,6 @@ accC2 = clusterAcc(groundTruth.y2, y2);
  
 
 asg.X = X_proj;
-st = ['y' num2str(thres) '.mat'];
-save(st, 'y1')
 X = groundTruth.X;
 asg.y1 = y1;
 asg.y2 = y2;

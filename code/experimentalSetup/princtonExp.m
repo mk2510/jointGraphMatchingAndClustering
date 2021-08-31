@@ -1,8 +1,9 @@
 function [] = princtonExp(thres, varargin)
 % Run graph matching and clustering algorithm on Princeton Shape Dataset.
-%
+
 rng(42);
 
+% load data for ship with truck
 [~,~, KP, KQ, asgT, gphs, ~,~, W1, W2,graphDisp] = genPointCloudsAndGraphs2();
 
 K = conKnlGphKU(KP, KQ, gphs);
@@ -20,7 +21,6 @@ grid off
 plot(graphDisp{1}.G,'XData',graphDisp{1}.P1(:,1),'YData',graphDisp{1}.P1(:,2),...
     'ZData',graphDisp{1}.P1(:,3), 'NodeColor', cmap, 'EdgeColor', 'r',...
     'NodeLabel',{},'MarkerSize',10, 'LineWidth',2.5)
-%Ship
 
 campos([ 0.2254    0.3507    0.5384])
 camup([  0.2538    0.9008   -0.3523])
@@ -41,7 +41,6 @@ plot(graphDisp{2}.G,'XData',graphDisp{2}.P1(:,1),'YData',graphDisp{2}.P1(:,2),..
     'ZData',graphDisp{2}.P1(:,3), 'NodeColor', (cmap' * asg.X)', 'EdgeColor','r',...
     'NodeLabel',{},'MarkerSize',10, 'LineWidth',2.5)
 axis equal
-%Ship
 campos( [ 1.9451    0.9131    1.9433])
 camup([ -0.2394    0.9522   -0.1896])
 camproj('orthographic')
@@ -58,7 +57,6 @@ grid off
 plot(graphDisp{1}.G,'XData',graphDisp{1}.P1(:,1),'YData',graphDisp{1}.P1(:,2),...
     'ZData',graphDisp{1}.P1(:,3), 'NodeColor', cmap, 'EdgeColor', 'r',...
     'NodeLabel',{},'MarkerSize',10, 'LineWidth',2.5)
-%Ship
 campos([ 0.2254    0.3507    0.5384])
 camup([  0.2538    0.9008   -0.3523])
 camproj('orthographic')
@@ -77,14 +75,13 @@ plot(graphDisp{2}.G,'XData',graphDisp{2}.P1(:,1),'YData',graphDisp{2}.P1(:,2),..
     'ZData',graphDisp{2}.P1(:,3), 'NodeColor', (cmap' * asg.X)', 'EdgeColor','r',...
     'NodeLabel',{},'MarkerSize',10, 'LineWidth',2.5)
 axis equal
-%Ship
 campos( [ 1.9451    0.9131    1.9433])
 camup([ -0.2394    0.9522   -0.1896])
 camproj('orthographic')
 camtarget([  0.1239    0.1680    0.5011])
 camva(  11.1817)
 
-
+% load data for helicopter with freight
 [~,~, KP, KQ, asgT, gphs, ~,~, W1, W2,graphDisp] = genPointCloudsAndGraphs();
 
 K = conKnlGphKU(KP, KQ, gphs);
@@ -102,7 +99,6 @@ grid off
 plot(graphDisp{1}.G,'XData',graphDisp{1}.P1(:,1),'YData',graphDisp{1}.P1(:,2),...
     'ZData',graphDisp{1}.P1(:,3), 'NodeColor', cmap, 'EdgeColor', 'r',...
     'NodeLabel',{},'MarkerSize',10, 'LineWidth',2.5)
-%Ship
 axis equal
 campos([ 3.5240    2.4611    4.3096])
 camup([ -0.2560    0.9135   -0.3161])
@@ -125,7 +121,6 @@ plot(graphDisp{2}.G,'XData',graphDisp{2}.P1(:,1),'YData',graphDisp{2}.P1(:,2),..
     'ZData',graphDisp{2}.P1(:,3), 'NodeColor', (cmap' * asg.X)', 'EdgeColor','r',...
     'NodeLabel',{},'MarkerSize',10, 'LineWidth',2.5)
 axis equal
-%Ship
 campos([ 2.1885   -2.0202    1.7434])
 camup([ -0.2578    0.3770    0.8896])
 camproj('orthographic')
@@ -142,7 +137,6 @@ grid off
 plot(graphDisp{1}.G,'XData',graphDisp{1}.P1(:,1),'YData',graphDisp{1}.P1(:,2),...
     'ZData',graphDisp{1}.P1(:,3), 'NodeColor', cmap, 'EdgeColor', 'r',...
     'NodeLabel',{},'MarkerSize',10, 'LineWidth',2.5)
-%Ship
 axis equal
 campos([ 3.5240    2.4611    4.3096])
 camup([ -0.2560    0.9135   -0.3161])
