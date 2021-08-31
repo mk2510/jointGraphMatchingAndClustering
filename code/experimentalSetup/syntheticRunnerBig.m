@@ -1,4 +1,4 @@
-function wsRun = syntheticRunnerBig(threshold, starti, endi, tagSrc, tagAlg, varargin)
+function wsRun = syntheticRunnerBig(threshold, beginning, tagSrc, tagAlg, varargin)
 % Run graph matching and clustering algorithms on the big synthetic data.
 
 % save option
@@ -33,7 +33,7 @@ prCIn('bin', nBin, 1);
 
 prC(iBin);
 
-wsBin = syntheticExpBig(threshold, starti, tagSrc, tagAlg, iBin, 'svL', 2);
+wsBin = syntheticExpBig(beginning, tagSrc, tagAlg, iBin, 'svL', 2);
 
 prCOut(nBin + 1);
 

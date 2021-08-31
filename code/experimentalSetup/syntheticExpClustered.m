@@ -18,10 +18,6 @@ if svL == 1 && exist(path, 'file')
 end
 prIn('cmumAsgRunBin', 'new, %s', prex);
 
-% parameters for generating src
-[tag, gaps, PFs, nIns] = cmumAsgPair(tagSrc);
-PF = PFs{iBin};
-
 % parameters for algorithms
 [parAlgs, algs] = gmPar(tagAlg);
 
@@ -38,7 +34,6 @@ ls = [1 1 1 3;1 1 2 3;1 1 3 3;1 1 4 3;1 1 5 3;1 1 6 3;1 1 7 3;1 1 8 3;1 1 9 3;
     1 1 17 3;1 1 18 3;1 1 19 3;1 1 20 3;1 1 21 3];
 rng(42);
 for iRep = 1:8
-    %prC(iRep);
     i = ls(iRep,1);
     j = ls(iRep,2);
     ii = ls(iRep,3);

@@ -61,7 +61,7 @@ ylabel('a_c')
 xlim([1 8])
 
 
-wsRun2 = syntheticRunnerBig(1, imgPar, imgPar, tagSrc, tagAlg, 'svL', svL);
+wsRun2 = syntheticRunnerBig(1, imgPar, tagSrc, tagAlg, 'svL', svL);
 
 fsta = wsRun2.Acc;
 plot_data =  fsta(end-2:end,2:end);

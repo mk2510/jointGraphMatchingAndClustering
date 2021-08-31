@@ -1,21 +1,7 @@
-function wsRun = syntheticRunnerClustered(starti, tagSrc, tagAlg, varargin)
-% Run graph matching algorithm on the CMU Motion data set.
+function wsRun = syntheticRunnerClustered(beginning, tagSrc, tagAlg, varargin)
+% Run graph matching algorithm on the clustered outlier synthetic data
 %
-% Input
-%   tagSrc  -  source type, 1 | 2 | 3
-%   tagAlg  -  algorithm type, 1 | 2 | ...
-%   varargin
-%     save option
-%
-% Output
-%   wsRun
-%     prex  -  name
-%     Me    -  mean, nAlg x nBin
-%     Dev   -  standard deviation, nAlg x nBin
-%
-% History
-%   create  -  Feng Zhou (zhfe99@gmail.com), 01-25-2009
-%   modify  -  Feng Zhou (zhfe99@gmail.com), 03-04-2013
+
 
 % save option
 folder = "cmum/asg/runT3";
@@ -49,7 +35,7 @@ prCIn('bin', nBin, 1);
 
 prC(iBin);
 
-wsBin = syntheticExpClustered(starti, tagSrc, tagAlg, iBin, 'svL', 2);
+wsBin = syntheticExpClustered(beginning, tagSrc, tagAlg, iBin, 'svL', 2);
 
 prCOut(nBin + 1);
 
