@@ -29,7 +29,7 @@ prCIn('bin', nBin, 1);
 
 prC(1);
 
-wsBin = syntheticDataExp(1, tagSrc, tagAlg, 1, 'svL', 2);
+wsBin = syntheticDataExp(1, tagSrc, tagAlg, 1, 'svL', svL);
 
 prCOut(nBin + 1);
 

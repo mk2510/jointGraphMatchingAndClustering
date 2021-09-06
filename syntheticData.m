@@ -4,7 +4,7 @@ clear variables;
 prSet(3);
 
 %% save flag
-svL = 1; % change svL = 1 if you want to re-run the experiments.
+svL = 2; % change svL = 1 if you want to re-run the experiments.
 
 %% algorithm parameter
 tagAlg = 2;

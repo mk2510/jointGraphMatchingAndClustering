@@ -10,7 +10,7 @@ prex = cellStr('cmum', 'tagSrc', tagSrc, 'tagAlg', tagAlg, threshold);
     'fold', folder);
 
 % load
-if svL == 1 && exist(path, 'file')
+if svL == 2 && exist(path, 'file')
     wsRun = matFld(path, 'wsRun');
     prInOut('cmumAsgRun', 'old, %s', prex);
     return;
@@ -33,7 +33,7 @@ prCIn('bin', nBin, 1);
 
 prC(1);
 
-wsBin = syntheticExpBig(beginning, tagSrc, tagAlg, 1, 'svL', 1);
+wsBin = syntheticExpBig(beginning, tagSrc, tagAlg, 1, 'svL', svL);
 
 prCOut(nBin + 1);
 
