@@ -31,9 +31,9 @@ nAlg = length(parAlgs) + 2;
 [Me, Dev, ObjMe, ObjDev] = zeross(nAlg + 1, nBin);
 prCIn('bin', nBin, 1);
 
-prC(iBin);
+prC(1);
 
-wsBin = syntheticExpBig(beginning, tagSrc, tagAlg, iBin, 'svL', 2);
+wsBin = syntheticExpBig(beginning, tagSrc, tagAlg, 1, 'svL', 1);
 
 prCOut(nBin + 1);
 

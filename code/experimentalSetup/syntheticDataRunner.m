@@ -27,9 +27,9 @@ nBin = length(gaps);
 % per gap
 prCIn('bin', nBin, 1);
 
-prC(iBin);
+prC(1);
 
-wsBin = syntheticDataExp(starti, tagSrc, tagAlg, iBin, 'svL', 2);
+wsBin = syntheticDataExp(1, tagSrc, tagAlg, 1, 'svL', 2);
 
 prCOut(nBin + 1);
 
