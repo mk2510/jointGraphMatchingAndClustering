@@ -1,6 +1,5 @@
 function [P1,P2] = newScene(i,j, k, l)
-%NEWSCENE Summary of this function goes here
-%   Detailed explanation goes here
+% Generates new scene for clustered outlier
 %         #
 % T =     #
 %         #
@@ -174,11 +173,7 @@ switch j
 end
 
 H = House;
-%if k
-%    temp = Q;
-%    Q = H;
-%    H = temp;
-%end
+
 ClusterNoise1 = [-1 -1 0
     -1 -1 0.5
     -1.25 -1.25 0
@@ -193,7 +188,6 @@ trans2(:,2) = trans2(:,2) - 2;
 H = H + Translation;
 P1 = [P;H; ClusterNoise1 + trans2];
 P2 = [Q;H; ClusterNoise1+ trans2];
-%P1 = [P;H; ClusterNoise1];
-%P2 = [Q;H; ClusterNoise1];
+
 end
 

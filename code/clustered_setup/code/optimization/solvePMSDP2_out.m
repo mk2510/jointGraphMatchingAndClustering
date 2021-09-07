@@ -2,16 +2,11 @@ function [X_proj,R_proj,X,R, objective, y1,y2,A1, A2] = solvePMSDP2_out(P,Q,W1, 
 %===============================================================
 % module:
 % ------
-% solvePMSDP.m
-%
-% paper:
-% -------
-% Point registration via efficient convex relaxation. 
-% Haggai Maron, Nadav Dym, Itay Kezurer, Shahar Kovalsky,Yaron Lipman 
+% solvePMSDP2_out.m
 %
 % Description:
 % -----------
-% solves PM-SDP
+% solves PM-SDP with coupled clustering
 
 %===============================================================
 
@@ -94,17 +89,6 @@ for i = 1:num_of_emb
     R{i} = double(problem.R{i});
 end
 objective = value(obj); % optimization objective
-%============================================
-
-%--------------------------------------------
-% Factorize Y
-%--------------------------------------------
-%for i = 1:num_of_emb
-%[ YSvdU, ~, YSvdV ] = svd( Y{i} );
-%XY{i} = reshape( YSvdU(:,1), size( X ) );
-%RY{i} = reshape( YSvdV(:,1), size( R{i} ) );
-%end
-%============================================
 
 %--------------------------------------------
 % Project Result
@@ -131,11 +115,6 @@ numIterInter = zeros( 1, 2 );
 [ Xs(:,:,1), Rs(:,:,1), objInterLeaving(1), numIterInter(1)] =  interleaving2_out(num_of_emb, X, R, P, Q, InterleavingType.X, params );
 % LB, start with R
 [ Xs(:,:,2), Rs(:,:,2), objInterLeaving(2), numIterInter(2)] =  interleaving2_out(num_of_emb, X, R, P, Q, InterleavingType.R, params );
-% UB, start with X
-%[ Xs(:,:,3), Rs(:,:,3), objInterLeaving(3), numIterInter(3)] =  interleaving2( XY, RY, P, Q, InterleavingType.X, params );
-% UB, start with R
-%[ Xs(:,:,4), Rs(:,:,4), objInterLeaving(4), numIterInter(4)] =  interleaving2( XY, RY, P, Q, InterleavingType.R, params );
-%============================================
 
 %--------------------------------------------
 % Take minimum metric solution

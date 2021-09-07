@@ -2,12 +2,7 @@ function [F,objY,problem] = generateConstraints2_out( problem,params, number, nu
 %===============================================================
 % module:
 % ------
-% generateConstraints.m
-%
-% paper:
-% -------
-% Point registration via efficient convex relaxation. 
-% Haggai Maron, Nadav Dym, Itay Kezurer, Shahar Kovalsky, Yaron Lipman 
+% generateConstraints2_out.m
 %
 % Description:
 % -----------

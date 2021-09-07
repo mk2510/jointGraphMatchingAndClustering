@@ -1,4 +1,5 @@
 function asg = SGM_wrapper(A,B, n, groundTruth,K)
+% wrapper to cast our problem setting into the SGM problem setting
 max_clust_size = n/2;
 s = 2;
 numdim = 10;

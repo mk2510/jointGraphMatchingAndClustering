@@ -1,4 +1,6 @@
 function [adjaMat] = genAdjaMatrix(Dst, Ang, Eg)
+    % calcucaltes an adjacency matrix given the distances of the nodes, 
+    % angles and edges, 
     [g1, g2] = size(Eg);
   
     

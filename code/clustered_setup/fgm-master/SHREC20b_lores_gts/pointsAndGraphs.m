@@ -1,4 +1,5 @@
 function [P,Q, KP, KQ, X_gt, gphs, permConstraint, node_aff, W1, W2,A,B, adja1, adja2] = pointsAndGraphs(id1, id2, id3, id4)
+% calculates the problem for clustered outliers
 
 [P,Q] = newScene(id1, id2, id3, id4);
 
@@ -9,87 +10,21 @@ X_gt.X = eye(n);
 
 i = randperm(n);
 X = eye(n);
-%if id3 == 0
-%   X2nd = X(15:end,:);
-%   X(15:end,:) = X(1:14,:);
-%   X(1:14,:) = X2nd;
-%end
+
 X = X(i,:);
 X_gt.X = X;
-%X_gt.X = eye(30);
 Q = (Q' * X)';
 
 %% generate graphs
 DT1 = delaunay(P);
 DT2 = delaunay(Q);
 
-%rng(42)
-%DT1 = convhull(P);
-%rng(42)
-%DT2 = convhull(Q);
-
 Eg1 = [DT1(:,1:2); DT1(:,2:3); DT1(:,3:4)];
 Eg2 = [DT2(:,1:2); DT2(:,2:3); DT2(:,3:4)];
 
-%
 noise = normrnd(0,0.05 * (id3),28+5,3);
 Q = Q + noise;
-%Eg1 = [DT1(:,1:2); DT1(:,2:3)];
-%Eg2 = [DT2(:,1:2); DT2(:,2:3)];
 
-%{
-[n,~] = size(Q);
-
-A = 1:n;
-nodes_withoutEdges1a = setdiff(A, Eg1(:,1));
-nodes_withoutEdges1b = setdiff(A, Eg1(:,2));
-nodes_withoutEdges1 = intersect(nodes_withoutEdges1a, nodes_withoutEdges1b);
-
-[~, k] = size(nodes_withoutEdges1);
-for i = 1:k
-    s = nodes_withoutEdges1(i);
-    t = mod(s + 1, 30) + 1;
-    Eg1 = [Eg1; s t];
-end 
-
-
-nodes_withoutEdges2a = setdiff(A, Eg2(:,1));
-nodes_withoutEdges2b = setdiff(A, Eg2(:,2));
-nodes_withoutEdges2 = intersect(nodes_withoutEdges2a, nodes_withoutEdges2b);
-
-[~, k] = size(nodes_withoutEdges2);
-for i = 1:k
-    s = nodes_withoutEdges2(i);
-    t = mod(s + 1, 30) + 1;
-    Eg2 = [Eg2; s t];
-end   
-
-i = randperm(n);
-X = eye(n);
-X = X(i,:);
-X_gt.X = X;
-%X_gt.X = eye(30);
-Q = (Q' * X)';
-%}
-
-%[p,q] = size(Eg1);
-%for i = 1:p
-%    for j = 1:q
-%        Eg1(i,j) = permutateNumber(Eg1(i,j), X);
-%    end
-%end
-%Eg2 = Eg1;
-%[p,q] = size(Eg2);
-%for i = 1:p
-%    for j = 1:q
-%        Eg2(i,j) = permutateNumber(Eg2(i,j), X);
-%    end
-%end
-
-%figure
-%visualizeGraph(Eg1, P);
-%figure
-%visualizeGraph(Eg2, Q);
 
 P = P';
 Q = Q';
@@ -104,139 +39,6 @@ adja2 = adja2 + adja2';
 adja1(adja1 > 0) = 1;
 adja2(adja2 > 0) = 1;
 
-col = [
-1 0 0
-1 0 0
-1 0 0
-1 0 0
-1 0 0
-1 0 0
-1 0 0
-1 0 0
-1 0 0
-1 0 0
-1 0 0
-1 0 0
-1 0 0
-1 0 0
-0 0 1
-0 0 1
-0 0 1
-0 0 1
-0 0 1
-0 0 1
-0 0 1
-0 0 1
-0 0 1
-0 0 1
-0 0 1
-0 0 1
-0 0 1
-0 0 1
-1 0 0
-1 0 0
-1 0 0
-1 0 0
-1 0 0
-];
-
-%figure('Color', 'w')
-%p = plot(graph(adja1), 'XData',P(1,:),'YData',P(2,:),'ZData',P(3,:), 'NodeColor',col, 'MarkerSize', 13, 'NodeLabel', {});
-%axis equal
-
-%figure('Color', 'w')
-%p = plot(graph(X' * adja2 *X), 'XData',Q(1,:),'YData',Q(2,:),'ZData',Q(3,:), 'NodeColor',col, 'MarkerSize', 13, 'NodeLabel', {});
-%axis equal
-%t = 2;
-%figure
-%plot(graph(adja1) ,'XData',P(1,:),'YData',P(2,:),'ZData',P(3,:))
-%figure
-%plot(graph(adja2) ,'XData',Q(1,:),'YData',Q(2,:),'ZData',Q(3,:))
-
-%{
-notConnected = true;
-K = 1;
-while notConnected
-    Idx = knnsearch(P,P, 'K', K);
-    id = 1:30;
-    Eg = [id' Idx(:,1)];
-    [n,m] = size(Idx);
-    for i = 2:m
-        Eg = [Eg; Idx(:,i-1:i)];
-    end
-    G = graph();
-    [n,m] = size(Eg);
-    for i = 1:n
-        G = addedge(G,Eg(i,1), Eg(i,2));
-    end
-    [bins, binsizes] = conncomp(G);
-    if any(binsizes(:) == 30)
-        notConnected = false;
-    end
-    K = K+1;
-end    
-Eg1 = Eg;
-K1 = K-1;
-%Eg2 = Eg1;
-%[n,m] = size(Eg2);
-%for i = 1:n
-%    for j = 1:m
-%        Eg2(i,j) = permutateNumber(Eg2(i,j),X);
-%    end
-%end
-notConnected = true;
-K = 1;
-Eg = [];
-while notConnected
-    Idx = knnsearch(Q,Q, 'K', K);
-    id = 1:30;
-    Eg = [id' Idx(:,1)];
-    [n,m] = size(Idx);
-    for i = 2:m
-        Eg = [Eg; Idx(:,i-1:i)];
-    end
-    G = graph();
-    [n,m] = size(Eg);
-    for i = 1:n
-        G = addedge(G,Eg(i,1), Eg(i,2));
-    end
-    [bins, binsizes] = conncomp(G);
-    if any(binsizes(:) == 30)
-        notConnected = false;
-    end
-    K = K+1;
-end
-Eg2 = Eg;
-K2 = K-1;
-
-K2 = max([K1 K2]);
-Idx = knnsearch(Q,Q, 'K', K2);
-id = 1:30;
-Eg2 = [id' Idx(:,1)];
-[n,m] = size(Idx);
-for i = 2:m
-    Eg2 = [Eg2; Idx(:,i-1:i)];
-end
-
-Idx = knnsearch(P,P, 'K', K2);
-id = 1:30;
-Eg1 = [id' Idx(:,1)];
-[n,m] = size(Idx);
-for i = 2:m
-    Eg1 = [Eg1; Idx(:,i-1:i)];
-end
-
-adja1 = genAdjaMatrix2(Eg1');
-adja2 = genAdjaMatrix2(Eg2');
-
-P = P';
-Q = Q';
-
-adja1 = adja1 + adja1';
-adja2 = adja2 + adja2';
-%}
-
-
 
 alsp1 = allspath(adja1);
 alsp2 = allspath(adja2);
@@ -246,12 +48,6 @@ agd2 = mean(alsp2,2);
 
 G1 = graph(adja1);
 G2 = graph(adja2);
-
-%figure
-%plot(G1, 'XData',P(1,:),'YData',P(2,:),'ZData',P(3,:))
-
-%figure
-%plot(G2, 'XData',Q(1,:),'YData',Q(2,:),'ZData',Q(3,:))
 
 
 [cc, da] = size(Eg1);
@@ -306,15 +102,6 @@ for i = 1:cb
 
 end 
 
-
-%dm1 = max(dsts1, [], 'all');
-%dsts1 = dsts1 / dm1;
-%dsts1 = exp(-dsts1);
-
-%dm2 = max(dsts2, [], 'all');
-%dsts2 = dsts2 / dm2;
-%dsts2 = exp(-dsts2);
-
 KP = zeros(number_of_nodes1, number_of_nodes2);
 
 
@@ -323,15 +110,10 @@ DQ = conDst(dsts1, dsts2);
 
 agd1Mat = repmat(agd1,1,number_of_nodes1);
 agd2Mat = repmat(agd2,1,number_of_nodes1);
-%KP = abs(agd1Mat - agd2Mat');
 m = max(KP, [], 'all');
-%KP = exp(-KP / (m+1));
 m = max(DQ, [], 'all');
 KQ = exp(-DQ / (m+1));
-%[xx,yy] = size(KQ);
-%KQ = zeros(xx,yy);
 
-%[KP, KQ] = coupledNodeEdgeScoring(Eg1', Eg2', number_of_nodes1, number_of_nodes2);
 
 gphs{1}.Pt = P;
 gphs{2}.Pt = Q;
@@ -406,9 +188,6 @@ y1(15:28) = 2;
 y2 = (y1' *X)';
 X_gt.y1 = y1;
 X_gt.y2 = y2;
-
-%P = U1;
-%Q = U2;
 
 adja1(adja1 > 0) = 1;
 adja2(adja2 > 0) = 1;

@@ -2,12 +2,7 @@ function [ X_proj, R_proj, currObj, currRun ] = interleaving2_out(num_of_emb, X,
 %===============================================================
 % module:
 % ------
-% interleaving.m
-%
-% paper:
-% -------
-% Point registration via efficient convex relaxation. 
-% Haggai Maron, Nadav Dym, Itay Kezurer, Shahar Kovalsky,Yaron Lipman 
+% interleaving2_out.m
 %
 % Description:
 % -----------

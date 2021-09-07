@@ -1,4 +1,5 @@
 function [asg] = schellewald(asgT, K, W1, W2)
+% implementation of the Schellewald et al (2005) GM algorithm
  p = mfilename('fullpath');
     pat = p(1:end-35);
     addpath(genpath([pat 'Mosek/9.2/toolbox']))
