@@ -1,4 +1,4 @@
-function wsBin = houseTestJob(thres, rePi, tagSrc, tagAlg, iBin, varargin)
+function wsBin = syntheticRunnerClustered(thres, rePi, tagSrc, tagAlg, iBin, varargin)
 % Run graph matching algorithm on the CMUM Motion data set.
 %
 % Input
