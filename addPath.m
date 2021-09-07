@@ -10,7 +10,7 @@ addpath(genpath([footpath '/PMSDP_relaxations']));
 addpath(genpath([footpath '/Mosek']));
 addpath(genpath([footpath '/toolbox_graph']));
 addpath(genpath([footpath '/YALMIP']));
-
+addpath(genpath([footpath '/code']));
 % Hes displays warnings, which will be surpressed
 warning('off','all')
 end

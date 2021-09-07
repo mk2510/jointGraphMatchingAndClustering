@@ -11,7 +11,7 @@ prex = cellStr('cmum', 'tagSrc', tagSrc, 'tagAlg', tagAlg, 'iBin', iBin);
                    'fold', folder);
 
 % load
-if svL == 1 && exist(path, 'file')
+if svL == 2 && exist(path, 'file')
     wsBin = matFld(path, 'wsBin');
     prInOut('cmumAsgRunBin', 'old, %s', prex);    
     return;
@@ -29,10 +29,9 @@ nAlg = length(parAlgs);
 prCIn('nRep', nRep, 1);
 rng(42);
 for iRep = 1:19
-
+    rng(42);
     % affinity 
     [P,Q, KP, KQ, asgT, gphs, ~,~, W1, W2,~,~] = pointsAndGraphsSmall(iRep);
-
     K = conKnlGphKU(KP, KQ, gphs);
     
    

@@ -24,7 +24,7 @@ Translation(:,1) = 3;
 H = halfCube + Translation;
 P1 = [Pyramid1;H];
 P2 = P1;
-noise = normrnd(0,0.075 * (i-1),11,3);
+noise = normrnd(0,0.045 * (i-1),11,3);
 P2 = P2 + noise;
 end
 

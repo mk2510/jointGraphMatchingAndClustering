@@ -15,8 +15,6 @@ X_gt.X = X;
 Q = (Q' * X)';
 
 %% generate graphs
-DT1 = delaunay(P);
-DT2 = delaunay(Q);
 
 Eg1 = [1 2;
     1 3;
@@ -51,9 +49,6 @@ alsp2 = allspath(adja2);
 
 agd1 = mean(alsp1,2);
 agd2 = mean(alsp2,2);
-
-G1 = graph(adja1);
-G2 = graph(adja2);
 
 [cc, da] = size(Eg1);
 [cb, da] = size(Eg2);
@@ -113,17 +108,8 @@ KP = zeros(number_of_nodes1, number_of_nodes2);
 DQ = conDst(dsts1, dsts2); 
 
 
-agd1Mat = repmat(agd1,1,number_of_nodes1);
-agd2Mat = repmat(agd2,1,number_of_nodes1);
-%KP = abs(agd1Mat - agd2Mat');
-m = max(KP, [], 'all');
-%KP = exp(-KP / (m+1));
 m = max(DQ, [], 'all');
 KQ = exp(-DQ / (m+1));
-%[xx,yy] = size(KQ);
-%KQ = zeros(xx,yy);
-
-%[KP, KQ] = coupledNodeEdgeScoring(Eg1', Eg2', number_of_nodes1, number_of_nodes2);
 
 gphs{1}.Pt = P;
 gphs{2}.Pt = Q;

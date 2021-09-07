@@ -11,7 +11,7 @@ prex = cellStr('cmum', 'tagSrc', tagSrc, 'tagAlg', tagAlg);
     'fold', folder);
 
 % load
-if svL == 1 && exist(path, 'file')
+if svL == 2 && exist(path, 'file')
     wsRun = matFld(path, 'wsRun');
     prInOut('cmumAsgRun', 'old, %s', prex);
     return;

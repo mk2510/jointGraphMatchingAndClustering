@@ -28,8 +28,9 @@ nAlg = length(parAlgs);
 [Acc, Obj] = zeross(nAlg + 1, nRep);
 prCIn('nRep', nRep, 1);
 ls = [1 1 1 3;1 1 2 3;1 1 3 3;1 1 4 3;1 1 5 3;1 1 6 3;1 1 1 3;1 1 7 3;1 1 8 3;1 1 9 3; 1 1 10 3];
-rng(42);
+
 for iRep = 1:11
+    rng(42);
     i = ls(iRep,1);
     j = ls(iRep,2);
     ii = ls(iRep,3);
