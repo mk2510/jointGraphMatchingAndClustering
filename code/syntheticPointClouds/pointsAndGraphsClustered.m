@@ -1,4 +1,4 @@
-function [P,Q, KP, KQ, X_gt, gphs, permConstraint, node_aff, W1, W2,A,B, adja1, adja2] = pointsAndGraphs(id1, id2, id3, id4)
+function [P,Q, KP, KQ, X_gt, gphs, permConstraint, node_aff, W1, W2,A,B, adja1, adja2] = pointsAndGraphsClustered(id1, id2, id3, id4)
 
 [P,Q] = newSceneClustered(id1, id2, id3, id4);
 
@@ -9,19 +9,15 @@ X_gt.X = eye(n);
 
 i = randperm(n);
 X = eye(n);
-%if id3 == 0
-%   X2nd = X(15:end,:);
-%   X(15:end,:) = X(1:14,:);
-%   X(1:14,:) = X2nd;
-%end
+
 X = X(i,:);
 X_gt.X = X;
-%X_gt.X = eye(30);
 Q = (Q' * X)';
 
 %% generate graphs
 DT1 = delaunay(P);
 DT2 = delaunay(Q);
+
 
 Eg1 = [DT1(:,1:2); DT1(:,2:3); DT1(:,3:4)];
 Eg2 = [DT2(:,1:2); DT2(:,2:3); DT2(:,3:4)];
@@ -43,6 +39,7 @@ adja2 = adja2 + adja2';
 adja1(adja1 > 0) = 1;
 adja2(adja2 > 0) = 1;
 
+
 alsp1 = allspath(adja1);
 alsp2 = allspath(adja2);
 
@@ -51,13 +48,6 @@ agd2 = mean(alsp2,2);
 
 G1 = graph(adja1);
 G2 = graph(adja2);
-
-%figure
-%plot(G1, 'XData',P(1,:),'YData',P(2,:),'ZData',P(3,:))
-
-%figure
-%plot(G2, 'XData',Q(1,:),'YData',Q(2,:),'ZData',Q(3,:))
-
 
 [cc, da] = size(Eg1);
 [cb, da] = size(Eg2);
@@ -111,32 +101,15 @@ for i = 1:cb
 
 end 
 
-
-%dm1 = max(dsts1, [], 'all');
-%dsts1 = dsts1 / dm1;
-%dsts1 = exp(-dsts1);
-
-%dm2 = max(dsts2, [], 'all');
-%dsts2 = dsts2 / dm2;
-%dsts2 = exp(-dsts2);
-
 KP = zeros(number_of_nodes1, number_of_nodes2);
 
 
 DQ = conDst(dsts1, dsts2); 
 
 
-agd1Mat = repmat(agd1,1,number_of_nodes1);
-agd2Mat = repmat(agd2,1,number_of_nodes1);
-%KP = abs(agd1Mat - agd2Mat');
-m = max(KP, [], 'all');
-%KP = exp(-KP / (m+1));
+
 m = max(DQ, [], 'all');
 KQ = exp(-DQ / (m+1));
-%[xx,yy] = size(KQ);
-%KQ = zeros(xx,yy);
-
-%[KP, KQ] = coupledNodeEdgeScoring(Eg1', Eg2', number_of_nodes1, number_of_nodes2);
 
 gphs{1}.Pt = P;
 gphs{2}.Pt = Q;
@@ -212,9 +185,6 @@ y2 = (y1' *X)';
 X_gt.y1 = y1;
 X_gt.y2 = y2;
 
-%P = U1;
-%Q = U2;
-
 adja1(adja1 > 0) = 1;
 adja2(adja2 > 0) = 1;
 end
@@ -225,7 +195,6 @@ function B = allspath(A)
 B=full(A);
 B(B==0)=Inf;
 C=ones(size(B));
-iter=0;
 while any(C(:))
     C=B;
     B=min(B,squeeze(min(repmat(B,[1 1 length(B)])+...
@@ -233,11 +202,4 @@ while any(C(:))
     C=B-C;
 end
 B(logical(eye(length(B))))=0;
-end
-
-function b = permutateNumber(a,X)
-    temp = zeros(30,1);
-    temp(a) = 1;
-    temp = (temp' * X)';
-    b = find(temp == 1);
 end

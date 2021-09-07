@@ -1,4 +1,4 @@
-function asg = kpsdp_2_PMSDP_wrapper_clustering(thres, groundTruth, K, W1,W2)
+function asg = kpsdp_2_PMSDP_wrapper_clustering(thres, groundTruth, K, W1,W2, k_decomposition)
 % change them, if different composition is requiered
 [a,~] = size(K);
 [Br, Bc] = findIntegerFactorsCloseToSquareRoot(a);
@@ -8,7 +8,7 @@ listForThreshold = [0.3,0.4,0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.81,0.8
     0.85, 0.9, 0.93, 0.95, 0.96];
     threshold = listForThreshold(thres);
     [b1, b2] = size(B);
-    b2 = min([b2, 6]);
+    b2 = min([b2, k_decomposition]);
     B_embedded = cell(b1,b2);
     C_embedded = cell(b1,b2);
     

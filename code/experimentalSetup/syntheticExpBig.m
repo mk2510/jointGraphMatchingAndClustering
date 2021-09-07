@@ -28,7 +28,7 @@ nAlg = length(parAlgs);
 [Acc, Obj] = zeross(nAlg + 1, nRep);
 prCIn('nRep', nRep, 1);
 ls = [1 1 1 3;1 1 2 3;1 1 3 3;1 1 4 3;1 1 5 3;1 1 6 3;1 1 1 3;1 1 7 3;1 1 8 3;1 1 9 3; 1 1 10 3];
-
+ls = [1 1 1 3;1 1 2 3;1 1 3 3;1 1 4 3;1 1 5 3;1 1 6 3;1 1 7 3;1 1 8 3;1 1 9 3;1 1 10 3;1 1 11 3;1 1 12 3;1 1 13 3;1 1 14 3;1 1 15 3;1 1 16 3;1 1 17 3;1 1 18 3;1 1 19 3;1 1 20 3;1 1 21 3];
 for iRep = 1:11
     rng(42);
     i = ls(iRep,1);
@@ -65,7 +65,7 @@ for iRep = 1:11
 
     
     tic
-    asg = kpsdp_2_PMSDP_wrapper_clustering(15, asgT, K, W1, W2);
+    asg = kpsdp_2_PMSDP_wrapper_clustering(15, asgT, K, W1, W2, 6);
     toc
 
     Acc(nAlg-8, iRep) = asg.acc;

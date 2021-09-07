@@ -71,7 +71,7 @@ for iRep = 1:10
     Obj(nAlg+3, iRep) = asg.obj;
     
     tic
-    asg = kpsdp_2_PMSDP_wrapper_clustering(15, asgT, K, W1, W2);
+    asg = kpsdp_2_PMSDP_wrapper_clustered_outlier(iRep, asgT, K,[], W1, W2);
     toc
 
     Acc(nAlg-8, iRep) = asg.acc;
