@@ -102,8 +102,7 @@ set(h,{'LineWidth'},{3;3;3});
 set(h,{'Marker'}, {'+';'o';'*'});
 xlabel('\sigma = 0.05 * x')
 ylabel('a_c')
-
-wsRun3 = syntheticRunnerClustered(4, imgPar, tagAlg, 'svL', svL);
+wsRun3 = syntheticRunnerClustered(1,1,tagSrc,tagAlg,2, 'svL', svL);
 
 fsta = wsRun3.Acc;
 plot_data = fsta(end-2:end,2:end-1);
