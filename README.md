@@ -14,11 +14,11 @@ We outperform state of the art in challenging cases with non-perfectly matching 
 ## Setup
 
 The code is currently configured to run on Windows systems.
-In order to let it run with a Unix system it is necessary to adapt the filepaths in the following files 'PMSDP_relaxations/optimisation/interleaving2.m' and 'code/clustered_setup/code/optimisation/interleaving2_out.m'
+In order to let it run with a Unix system it is necessary to adapt the filepaths in the following files `PMSDP_relaxations/optimisation/interleaving2.m` and `code/clustered_setup/code/optimisation/interleaving2_out.m`
 by replacing the \ with a /.
 
 If the precomputed results should shown, you can skip the setup part and head 
-straight to the Quick start section.
+straight to the **Quick start** section.
 Before running the first experiments a few setup steps are necessary.
 
 1) run make to compile all C++ files, which are necessary for the [FGM](https://github.com/zhfe99/fgm) algorithm to run
