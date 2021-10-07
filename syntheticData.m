@@ -28,7 +28,7 @@ subplot(2,1,1)
 plot_data([1 3], :) = plot_data([3 1], :);
 
 h = plot(plot_data');
-set(h,{'LineWidth'},{3;1.5;3});
+set(h,{'LineWidth'},{4;4;8});
 set(h,{'Marker'}, {'s';'o';'*'});
 set(gcf,'Position',[10 10 475 300])
 legend({'FGM-D + kmeans','SDP + Clustering','Our'}...
@@ -37,6 +37,8 @@ xlabel('\sigma = 0.15 * x')
 set(gcf,'Position',[10 10 475 600])
 ylabel('a_m')
 xlim([1 8])
+set(gca,'FontSize',24) 
+
 
 plot_data2 = fsta(2:3,2:2:end);
 plot_data2 = plot_data2(1,:) .* plot_data2(2,:);
@@ -54,11 +56,12 @@ plt_data = [plot_data4;plot_data3; plot_data2];
 subplot(2,1,2)
 h = plot(plt_data');
 xlim([1 10])
-set(h,{'LineWidth'},{3;1.5;3});
+set(h,{'LineWidth'},{4;4;8});
 set(h,{'Marker'}, {'s';'o';'*'});
 xlabel('\sigma = 0.15 * x')
 ylabel('a_c')
 xlim([1 8])
+set(gca,'FontSize',24) 
 
 
 wsRun2 = syntheticRunnerBig(1, imgPar, tagSrc, tagAlg, 'svL', svL);
@@ -73,10 +76,11 @@ figure('Color', 'w','DefaultAxesFontSize',18)
 subplot(2,1,1)
 h = plot(1:10, plot_data');
 xlim([1 10])
-set(h,{'LineWidth'},{3;3;3});
+set(h,{'LineWidth'},{4;4;8});
 set(h,{'Marker'}, {'+';'o';'*'});
 xlabel('\sigma = 0.05 * x')
 ylabel('a_m')
+set(gca,'FontSize',24) 
 set(gcf,'Position',[10 10 475 600])
 legend({'FGM-D + kmeans', 'SGM', 'Our'}...
     ,'Location','southwest','Orientation','horizontal','Box','off')
@@ -98,11 +102,14 @@ plt_data = [plot_data4;plot_data3; plot_data2];
 subplot(2,1,2)
 h = plot(1:10,plt_data');
 xlim([1 10])
-set(h,{'LineWidth'},{3;3;3});
+set(h,{'LineWidth'},{4;4;8});
 set(h,{'Marker'}, {'+';'o';'*'});
 xlabel('\sigma = 0.05 * x')
 ylabel('a_c')
-wsRun3 = syntheticRunnerClustered(1,1,tagSrc,tagAlg,2, 'svL', svL);
+set(gca,'FontSize',24) 
+
+
+wsRun3 = syntheticRunnerClustered(1,3,tagSrc,tagAlg,1, 'svL', svL);
 
 fsta = wsRun3.Acc;
 plot_data = fsta(end-2:end,2:end-1);

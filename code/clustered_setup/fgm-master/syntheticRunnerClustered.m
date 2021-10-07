@@ -1,7 +1,7 @@
 function wsBin = syntheticRunnerClustered(thres, rePi, tagSrc, tagAlg, iBin, varargin)
 % Run graph matching and cluster algorithms on synthetic data
 
-folder = "cmum/asg/bin" + num2str(thres) + "Tt" + num2str(rePi);
+folder = "cmum/asg/binT" + num2str(rePi);
 prex = cellStr('cmum', 'tagSrc', tagSrc, 'tagAlg', tagAlg, 'iBin', iBin);
 [svL, path] = psSv(varargin, ...
                    'prex', prex, ...
