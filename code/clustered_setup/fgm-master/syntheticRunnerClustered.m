@@ -70,27 +70,27 @@ for iRep = 1:10
 
     
     pars = parAlgs{9};
-    tic
-    asg = clusterFGM_wrapper(KP, KQD, Ct, gphDs, asgT, pars, P,Q,asgT,K);
-    toc
-    Acc(nAlg-2, iRep) = asg.acc;
-    Acc(nAlg-1, iRep) = asg.acc1;
-    Acc(nAlg, iRep) = asg.acc2;
-    Acc(nAlg + 4, iRep) = asg.acc * asg.acc1 * asg.acc2;
-
-    Obj(nAlg+4, iRep) = asg.obj;
-    tic
-    asg = SGM_wrapper(A,B,28+5, asgT,K);
-    toc
-    Acc(nAlg-5, iRep) = asg.acc;
-    Acc(nAlg-4, iRep) = asg.acc1;
-    Acc(nAlg-3, iRep) = asg.acc2;
-    Acc(nAlg + 3, iRep) = asg.acc * asg.acc1 * asg.acc2;
-
-    Obj(nAlg+3, iRep) = asg.obj;
+%     tic
+%     asg = clusterFGM_wrapper(KP, KQD, Ct, gphDs, asgT, pars, P,Q,asgT,K);
+%     toc
+%     Acc(nAlg-2, iRep) = asg.acc;
+%     Acc(nAlg-1, iRep) = asg.acc1;
+%     Acc(nAlg, iRep) = asg.acc2;
+%     Acc(nAlg + 4, iRep) = asg.acc * asg.acc1 * asg.acc2;
+% 
+%     Obj(nAlg+4, iRep) = asg.obj;
+%     tic
+%     asg = SGM_wrapper(A,B,28+5, asgT,K);
+%     toc
+%     Acc(nAlg-5, iRep) = asg.acc;
+%     Acc(nAlg-4, iRep) = asg.acc1;
+%     Acc(nAlg-3, iRep) = asg.acc2;
+%     Acc(nAlg + 3, iRep) = asg.acc * asg.acc1 * asg.acc2;
+% 
+%     Obj(nAlg+3, iRep) = asg.obj;
     
     tic
-    asg = kpsdp_2_PMSDP_wrapper(thres, asgT, K,perm_const, W1, W2);
+    asg = kpsdp_2_PMSDP_wrapper_2(thres, asgT, K,perm_const, W1, W2);
     toc
 
     Acc(nAlg-8, iRep) = asg.acc;
@@ -100,6 +100,19 @@ for iRep = 1:10
     
     
     Acc(nAlg + 2, iRep) = asg.acc * asg.acc1 * asg.acc2;
+    
+    
+    tic
+    asg = kpsdp_2_PMSDP_wrapper_clustered_outlier_without_bound(thres, asgT, K,perm_const, W1, W2);
+    toc
+
+    Acc(nAlg+5, iRep) = asg.acc;
+    Acc(nAlg+6, iRep) = asg.acc1;
+    Acc(nAlg+7, iRep) = asg.acc2;
+    Obj(nAlg+8, iRep) = asg.obj;
+    
+    
+    Acc(nAlg + 8, iRep) = asg.acc * asg.acc1 * asg.acc2;
     
 
         

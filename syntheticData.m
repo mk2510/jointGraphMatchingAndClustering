@@ -114,6 +114,7 @@ wsRun3 = syntheticRunnerClustered(1,3,tagSrc,tagAlg,1, 'svL', svL);
 fsta = wsRun3.Acc;
 plot_data = fsta(end-2:end,2:end-1);
 plot_data = plot_data .^(1/3);
+plot_data = [plot_data;fsta(14,:)];
 
 plot_data([1 3], :) = plot_data([3 1], :);
 
