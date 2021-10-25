@@ -1,4 +1,4 @@
-# Joint Graph Matching and Clustering
+# Convex Joint Graph Matching and Clustering via Semidefinite Relaxations
 
 ![Teaser Image Graphic](https://github.com/mk2510/jointGraphMatchingAndClustering/blob/main/PaperTeaserImageNew.png)
 
