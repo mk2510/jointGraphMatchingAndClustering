@@ -21,7 +21,8 @@ If the precomputed results should be shown, you can skip the setup part and head
 2) Run 'code/clustered_setup/fgm-master/make' to compile all C++ files, which are necessary for the FGM algorithm 
 
 The following libraries should be added to the main folder:
-	a) Mosek (the code is configured and tested for Mosek 9.2) 
+    
+    a) Mosek (the code is configured and tested for Mosek 9.2) 
     b) Yalmip
     c) ANN libray - supplied and compiled -
     d) Graph toolbox
