@@ -17,15 +17,19 @@ The code is currently configured to run on Windows systems. In order to let it r
 
 If the precomputed results should be shown, you can skip the setup part and head straight to the **Quick start** section. Before running the first experiments, a few setup steps are necessary.
 
-1) Run make to compile all C++ files, which are necessary for the FGM algorithm 
+1) Run make to compile all C++ files, which are necessary for the [FGM](https://github.com/zhfe99/fgm) algorithm 
 2) Run 'code/clustered_setup/fgm-master/make' to compile all C++ files, which are necessary for the FGM algorithm 
 
 The following libraries should be added to the main folder:
     
-1) Mosek (the code is configured and tested for Mosek 9.2) 
-2) Yalmip
+1) [Yalmip](https://yalmip.github.io)
+    
+2) [Mosek](https://www.mosek.com). Here the code is configured and tested for Mosek 9.2
+
 3) ANN libray - supplied and compiled -
-4) Graph toolbox
+
+4) [Graph toolbox](https://de.mathworks.com/matlabcentral/fileexchange/5355-toolbox-graph)
+
 
 
 ## Quick start
