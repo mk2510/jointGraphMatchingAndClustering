@@ -22,10 +22,10 @@ If the precomputed results should be shown, you can skip the setup part and head
 
 The following libraries should be added to the main folder:
     
-(a) Mosek (the code is configured and tested for Mosek 9.2) 
-(b) Yalmip
-(c) ANN libray - supplied and compiled -
-(d) Graph toolbox
+1) Mosek (the code is configured and tested for Mosek 9.2) 
+2) Yalmip
+3) ANN libray - supplied and compiled -
+4) Graph toolbox
 
 
 ## Quick start
