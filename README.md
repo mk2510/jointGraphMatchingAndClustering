@@ -36,7 +36,20 @@ The following libraries should be added to the main folder:
 
 
 The three executable files for the experiments are in the main directory: 
-cmuHouse.m, syntheticData.m and princetonShapes.m. cmuHouse.m performs the experiments on the CMU House dataset. Executing syntheticData.m will display all graphs, which show the results of our synthetic data experiments (no further libraries are required). In order to display the pre-calculated results from those experiments,   princetonShapes.m demonstrates the algorithm on the shape data (helicopter and ship scenes from the paper) of the Princetion shape dataset.
+cmuHouse.m, syntheticData.m and princetonShapes.m. cmuHouse.m performs the experiments on the CMU House dataset. Executing syntheticData.m will display all graphs, which show the results of our synthetic data experiments (no further libraries are required). In order to display the pre-calculated results from those experiments,   princetonShapes.m demonstrates the algorithm on the shape data (helicopter and ship scenes from the paper) of the Princetion shape dataset. 
+
+## Additional Details
+
+The code of the whole benchmark suite is based on the graph matching benchmark, published with the [FGM code](https://github.com/zhfe99/fgm). The code for our convex relaxation matching is based on the code provided by the authors of the [PMSDP](https://github.com/Haggaim/PM-SDP) paper. 
+If you are using this code, please cite the paper: 
+```
+@inproceedings{Krahn2021, 
+    author = {Krahn, Maximilian and Bernard, Florian and Golyanik, Vladislav}, 
+    title = {Convex Joint Graph Matching and Clustering via Semidefinite Relaxations}, 
+    booktitle = {International Conference on 3D Vision (3DV)}, 
+    year = {2021} 
+}
+```
 
 ## License
 
