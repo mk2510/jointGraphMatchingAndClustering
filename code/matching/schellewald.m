@@ -1,3 +1,7 @@
+% 
+% based on code by: Florian Bernard (f.bernardpi@gmail.com)
+% 
+
 function [asg] = schellewald(asgT, K, W1, W2)
 p = mfilename('fullpath');
 pat = p(1:end-35);
