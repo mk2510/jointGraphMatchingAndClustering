@@ -1,3 +1,7 @@
+% 
+% original code by: Florian Bernard (f.bernardpi@gmail.com)
+% 
+
 function [B,C, bVec, cVec] = kroneckerDecomposition(A, Br, Bc, doFull)
 
 	if ( ~exist('doFull', 'var') )
